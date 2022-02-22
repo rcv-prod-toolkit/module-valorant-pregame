@@ -1,4 +1,4 @@
-import { PluginContext } from 'league-prod-toolkit/core/modules/Module'
+import type { PluginContext } from 'rcv-prod-toolkit-types'
 
 module.exports = async (ctx: PluginContext) => {
   // Register new UI page
