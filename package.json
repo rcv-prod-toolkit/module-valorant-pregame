@@ -1,6 +1,6 @@
 {
   "name": "module-valorant-pregame",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module that provides a gfx for the Valorant PreGame",
   "author": "RCVolus",
   "license": "MIT",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "typescript": "^4.3.2",
-    "rcv-prod-toolkit-types": "^1.0.1",
+    "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types",
     "sass": "^1.34.1"
   },
   "scripts": {
