@@ -1,6 +1,8 @@
 import type { PluginContext } from '@rcv-prod-toolkit/types'
 
 module.exports = async (ctx: PluginContext) => {
+  const namespace = ctx.plugin.module.getName();
+
   // Register new UI page
   ctx.LPTE.emit({
     meta: {
@@ -9,9 +11,9 @@ module.exports = async (ctx: PluginContext) => {
       version: 1
     },
     pages: [{
-      name: 'OP Valorant PreGame',
+      name: 'Valo: Agentselect',
       frontend: 'frontend',
-      id: 'op-valorant-pregame'
+      id: `op-${namespace}`
     }]
   });
 
