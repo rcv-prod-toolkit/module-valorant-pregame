@@ -62,7 +62,7 @@ function displayData (state) {
 LPTE.onready(async () => {
   const staticRes = await LPTE.request({
     meta: {
-      namespace: 'valorant-static',
+      namespace: 'module-valorant-static',
       type: 'request-constants',
       version: 1
     }
@@ -72,7 +72,7 @@ LPTE.onready(async () => {
 
   const res = await LPTE.request({
     meta: {
-      namespace: 'valorant-state',
+      namespace: 'module-valorant-state',
       type: 'request',
       version: 1
     }
