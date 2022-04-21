@@ -25,7 +25,6 @@ const template = document.querySelector('#agent-template')
 function addPlayer (index, participant, player, team) {
   const playerDiv = template.content.cloneNode(true)
   playerDiv.querySelector('.agent').dataset.subject = player.Subject
-  playerDiv.querySelector('.agent').style.backgroundImage = `url(/pages/op-valorant-pregame/gfx/img/agent-tiles/${team}-${index+1}.png)`
 
   playerDiv.querySelector('.agent-name').innerHTML = participant.GameName
 
