@@ -19,7 +19,7 @@ function initGfx (data, static) {
 }
 
 const agentImgUrl = (CharacterID) => {
-  return `/serve/valorant-static/agent-drawing/${CharacterID}.png`
+  return `/serve/module-valorant-static/agent-drawing/${CharacterID}.png`
 }
 
 const template = document.querySelector('#agent-template')
@@ -52,7 +52,7 @@ function initMap (map, static) {
     uuid: currentMap.uuid
   }
 
-  mapDiv.style.backgroundImage = `url(/serve/valorant-static/map-splash/${mapData.uuid}.png)`
+  mapDiv.style.backgroundImage = `url(/serve/module-valorant-static/map-splash/${mapData.uuid}.png)`
   mapName.innerHTML = mapData.displayName
 }
 
