@@ -26,19 +26,19 @@ export interface PreGame {
 }
 
 export interface PreGameInit {
-  ID: string,
+  ID: string
   timer: {
-    phase: PregameState,
+    phase: PregameState
     timeLeftUntil: number
-  },
-  participants: PlayerName[],
-  teams: Team[],
-  map: Map,
-  gameMode: GameMode,
+  }
+  participants: PlayerName[]
+  teams: Team[]
+  map: Map
+  gameMode: GameMode
   gameType: GameType
 }
 
 export interface Team {
-  ID: "Red" | "Blue"
+  ID: 'Red' | 'Blue'
   Players: Player[]
 }

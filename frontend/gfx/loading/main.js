@@ -1,4 +1,4 @@
-function initGfx (data, static) {
+function initGfx(data, static) {
   if (!data.matchInfo._available || !data.preGame._available) return
 
   document.querySelector('#Blue').innerHTML = ''
@@ -9,7 +9,7 @@ function initGfx (data, static) {
   for (const team of data.preGame.teams) {
     for (let i = 0; i < team.Players.length; i++) {
       const player = team.Players[i]
-      const participant = data.matchInfo.participants.find(p => {
+      const participant = data.matchInfo.participants.find((p) => {
         return player.Subject === p.Subject
       })
       addPlayer(i, participant, player, team.TeamID)
@@ -22,22 +22,23 @@ const agentImgUrl = (CharacterID) => {
 }
 
 const template = document.querySelector('#agent-template')
-function addPlayer (index, participant, player, team) {
+function addPlayer(index, participant, player, team) {
   const playerDiv = template.content.cloneNode(true)
   playerDiv.querySelector('.agent').dataset.subject = player.Subject
 
   playerDiv.querySelector('.agent-name').innerHTML = participant.GameName
 
-  playerDiv.querySelector('.agent-img').src = player.CharacterID == "" ? "" : agentImgUrl(player.CharacterID)
+  playerDiv.querySelector('.agent-img').src =
+    player.CharacterID == '' ? '' : agentImgUrl(player.CharacterID)
 
-  document.querySelector(`#${team}`).appendChild(playerDiv);
+  document.querySelector(`#${team}`).appendChild(playerDiv)
 }
 
 const mapDiv = document.body
 const mapIcon = document.querySelector('#map-icon')
 const mapName = document.querySelector('#map-name')
-function initMap (map, static) {
-  const currentMap = static.mapData.find(m => {
+function initMap(map, static) {
+  const currentMap = static.mapData.find((m) => {
     return m.mapUrl === map
   })
 
@@ -47,13 +48,16 @@ function initMap (map, static) {
   mapIcon.src = `/serve/module-valorant-static/map-rcv/${currentMap.uuid}.png`
 }
 
-function displayData (state) {
+function displayData(state) {
   if (!state.preGame._available) return
 
   for (const team of state.preGame.teams) {
     for (const player of team.Players) {
-      const playerDiv = document.querySelector(`[data-subject='${player.Subject}']`)
-      playerDiv.querySelector('.agent-img').src = player.CharacterID == "" ? "" : agentImgUrl(player.CharacterID)
+      const playerDiv = document.querySelector(
+        `[data-subject='${player.Subject}']`
+      )
+      playerDiv.querySelector('.agent-img').src =
+        player.CharacterID == '' ? '' : agentImgUrl(player.CharacterID)
     }
   }
 }
@@ -65,7 +69,7 @@ LPTE.onready(async () => {
       type: 'request-constants',
       version: 1
     }
-  });
+  })
 
   const static = staticRes.constants
 
@@ -75,7 +79,7 @@ LPTE.onready(async () => {
       type: 'request',
       version: 1
     }
-  });
+  })
 
   const data = res.state
 
@@ -83,9 +87,9 @@ LPTE.onready(async () => {
 
   LPTE.on('valorant-state-pre-game', 'create', (e) => {
     initGfx(e.state, static)
-  });
+  })
 
   LPTE.on('valorant-state-pre-game', 'update', (e) => {
     displayData(e.state)
-  });
+  })
 })

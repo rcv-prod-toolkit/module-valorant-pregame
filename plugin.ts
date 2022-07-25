@@ -1,7 +1,7 @@
 import type { PluginContext } from '@rcv-prod-toolkit/types'
 
 module.exports = async (ctx: PluginContext) => {
-  const namespace = ctx.plugin.module.getName();
+  const namespace = ctx.plugin.module.getName()
 
   // Register new UI page
   ctx.LPTE.emit({
@@ -10,12 +10,14 @@ module.exports = async (ctx: PluginContext) => {
       namespace: 'ui',
       version: 1
     },
-    pages: [{
-      name: 'Valo: Agentselect',
-      frontend: 'frontend',
-      id: `op-${namespace}`
-    }]
-  });
+    pages: [
+      {
+        name: 'Valo: Agentselect',
+        frontend: 'frontend',
+        id: `op-${namespace}`
+      }
+    ]
+  })
 
   // Emit event that we're ready to operate
   ctx.LPTE.emit({
@@ -25,5 +27,5 @@ module.exports = async (ctx: PluginContext) => {
       version: 1
     },
     status: 'RUNNING'
-  });
-};
+  })
+}

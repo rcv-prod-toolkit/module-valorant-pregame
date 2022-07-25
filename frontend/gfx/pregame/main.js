@@ -1,6 +1,6 @@
 const namespace = 'module-valorant-pregame'
 
-function initGfx (data, static) {
+function initGfx(data, static) {
   if (!data.matchInfo._available || !data.preGame._available) return
 
   document.querySelector('#Blue').innerHTML = ''
@@ -10,7 +10,7 @@ function initGfx (data, static) {
 
   for (const team of data.preGame.teams) {
     for (const player of team.Players) {
-      const participant = data.matchInfo.participants.find(p => {
+      const participant = data.matchInfo.participants.find((p) => {
         return player.Subject === p.Subject
       })
       addPlayer(participant, player, team.TeamID)
@@ -23,27 +23,28 @@ const agentImgUrl = (CharacterID) => {
 }
 
 const template = document.querySelector('#agent-template')
-function addPlayer (participant, player, team) {
+function addPlayer(participant, player, team) {
   const playerDiv = template.content.cloneNode(true)
   playerDiv.querySelector('.agent').dataset.subject = player.Subject
 
   playerDiv.querySelector('.agent-name').innerHTML = participant.GameName
 
-  playerDiv.querySelector('.agent-img').src = player.CharacterID == "" ? "" : agentImgUrl(player.CharacterID)
+  playerDiv.querySelector('.agent-img').src =
+    player.CharacterID == '' ? '' : agentImgUrl(player.CharacterID)
 
-  if (player.CharacterSelectionState === "locked") {
+  if (player.CharacterSelectionState === 'locked') {
     playerDiv.querySelector('.agent').classList.remove('hover')
   } else {
     playerDiv.querySelector('.agent').classList.add('hover')
   }
 
-  document.querySelector(`#${team}`).appendChild(playerDiv);
+  document.querySelector(`#${team}`).appendChild(playerDiv)
 }
 
 const mapDiv = document.querySelector('#map')
 const mapName = document.querySelector('#map-name')
-function initMap (map, static) {
-  const currentMap = static.mapData.find(m => {
+function initMap(map, static) {
+  const currentMap = static.mapData.find((m) => {
     return m.mapUrl === map
   })
 
@@ -56,14 +57,17 @@ function initMap (map, static) {
   mapName.innerHTML = mapData.displayName
 }
 
-function displayData (state) {
+function displayData(state) {
   if (!state.preGame._available) return
 
   for (const team of state.preGame.teams) {
     for (const player of team.Players) {
-      const playerDiv = document.querySelector(`[data-subject='${player.Subject}']`)
-      playerDiv.querySelector('.agent-img').src = player.CharacterID == "" ? "" : agentImgUrl(player.CharacterID)
-      if (player.CharacterSelectionState === "locked") {
+      const playerDiv = document.querySelector(
+        `[data-subject='${player.Subject}']`
+      )
+      playerDiv.querySelector('.agent-img').src =
+        player.CharacterID == '' ? '' : agentImgUrl(player.CharacterID)
+      if (player.CharacterSelectionState === 'locked') {
         playerDiv.classList.remove('hover')
       } else {
         playerDiv.classList.add('hover')
@@ -79,7 +83,7 @@ LPTE.onready(async () => {
       type: 'request-constants',
       version: 1
     }
-  });
+  })
 
   const static = staticRes.constants
 
@@ -89,7 +93,7 @@ LPTE.onready(async () => {
       type: 'request',
       version: 1
     }
-  });
+  })
 
   const data = res.state
 
@@ -97,9 +101,9 @@ LPTE.onready(async () => {
 
   LPTE.on('valorant-state-pre-game', 'create', (e) => {
     initGfx(e.state, static)
-  });
+  })
 
   LPTE.on('valorant-state-pre-game', 'update', (e) => {
     displayData(e.state)
-  });
+  })
 })

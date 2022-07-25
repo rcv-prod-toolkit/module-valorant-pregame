@@ -1,7 +1,7 @@
 export interface Player {
   Subject: string
   CharacterID: string
-  CharacterSelectionState: "" | "selected" | "locked"
+  CharacterSelectionState: '' | 'selected' | 'locked'
   PregamePlayerState: string
   CompetitiveTier: number
   PlayerIdentity: {
@@ -12,7 +12,7 @@ export interface Player {
     PreferredLevelBorderID: string
     Incognito: boolean
     HideAccountLevel: boolean
-  },
+  }
   SeasonalBadgeInfo: {
     SeasonID: string
     NumberOfWins: number
