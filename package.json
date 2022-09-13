@@ -11,12 +11,16 @@
     "plugin": {
       "main": "dist/plugin.js"
     },
-    "needsBuild": true
+    "needsBuild": true,
+    "dependencies": [
+      "module-valorant-state",
+      "module-valorant-static"
+    ]
   },
   "devDependencies": {
-    "typescript": "^4.3.2",
     "@rcv-prod-toolkit/types": "github:rcv-prod-toolkit/types",
-    "sass": "^1.34.1"
+    "sass": "^1.34.1",
+    "typescript": "^4.3.2"
   },
   "scripts": {
     "compile-sass": "sass frontend/gfx/:frontend/gfx/",
