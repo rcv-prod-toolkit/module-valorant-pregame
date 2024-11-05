@@ -12,6 +12,7 @@
       "main": "dist/plugin.js"
     },
     "needsBuild": true,
+    "toolkitVersion": ">=1.11",
     "dependencies": [
       "module-valorant-state",
       "module-valorant-static"
